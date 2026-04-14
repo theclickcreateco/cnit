@@ -17,7 +17,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "The Authority Approach | Digital Growth & Lead Capture Authority",
+  title: "CN IT Solutions | Digital Growth & Lead Capture Agency",
   description: "We engineer high-performance systems that transform your digital presence into a consistent source of new clients.",
 };
 

@@ -48,6 +48,13 @@
 
   /* Shadows (Tonal Layering Principle) */
   --shadow-premium: 0px 24px 48px rgba(15, 32, 59, 0.08); /* Tinted Navy Shadow */
+
+  /* Animations */
+  --animate-marquee: marquee 40s linear infinite;
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(calc(-50% - 1.5rem)); }
+  }
 }
 
 @layer base {
