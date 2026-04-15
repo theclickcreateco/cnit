@@ -9,18 +9,24 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'Name, email, and message are required.' }, { status: 400 });
     }
 
+    const port = Number(process.env.SMTP_PORT) || 587;
+    const isSecure = process.env.SMTP_SECURE === 'true' || port === 465;
+
     const transporter = nodemailer.createTransport({
-      host: process.env.SMTP_HOST || 'smtp.gmail.com', // fallback default
-      port: Number(process.env.SMTP_PORT) || 587,
-      secure: process.env.SMTP_SECURE === 'true', // true for 465, false for other ports
+      host: process.env.SMTP_HOST || 'smtp.gmail.com',
+      port: port,
+      secure: isSecure,
       auth: {
         user: process.env.SMTP_USER,
         pass: process.env.SMTP_PASS,
       },
+      // Increase timeout for slow servers
+      connectionTimeout: 10000,
+      greetingTimeout: 5000,
     });
 
     const mailOptions = {
-      from: process.env.SMTP_FROM_EMAIL || process.env.SMTP_USER || '"CN IT Solutions Site" <noreply@cnitsolutions.com>',
+      from: `CN IT Solutions <${process.env.SMTP_USER}>`,
       to: 'partner@cnitsolutions.com',
       replyTo: email,
       subject: `[Website Lead] ${subject || 'Inquiry from ' + name}`,
@@ -49,7 +55,16 @@ ${message}
 
     return NextResponse.json({ success: true, message: 'Message sent successfully!' });
   } catch (error: any) {
-    console.error('Email send error:', error);
-    return NextResponse.json({ error: 'Failed to send message.', details: error?.message }, { status: 500 });
+    console.error('Email send error full trace:', error);
+    
+    // Log more specific SMTP error details if available
+    const errorMessage = error?.response || error?.message || 'Failed to send message.';
+    const errorCode = error?.code || 'COMMUNICATION_ERROR';
+
+    return NextResponse.json({ 
+      error: 'Failed to send message.', 
+      details: errorMessage,
+      code: errorCode
+    }, { status: 500 });
   }
 }

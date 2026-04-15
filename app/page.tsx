@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
 
 export default function Home() {
   const [roiMetrics, setRoiMetrics] = useState({
@@ -61,12 +62,12 @@ export default function Home() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-8 pt-8">
-              <button className="px-12 py-6 bg-primary text-primary-container font-headline font-extrabold rounded-xl hover:opacity-90 transition-all active:scale-95 shadow-2xl shadow-primary/20 uppercase tracking-[0.2em] text-sm cursor-pointer">
+              <Link href="/calculators" className="px-12 py-6 bg-primary text-primary-container font-headline font-extrabold rounded-xl hover:opacity-90 transition-all active:scale-95 shadow-2xl shadow-primary/20 uppercase tracking-[0.2em] text-sm cursor-pointer flex items-center justify-center text-center">
                 Instant Value Audit
-              </button>
-              <button className="px-12 py-6 bg-white/5 backdrop-blur-md border border-white/10 text-white font-headline font-bold rounded-xl hover:bg-white/10 transition-all uppercase tracking-[0.2em] text-sm cursor-pointer">
+              </Link>
+              <Link href="/about" className="px-12 py-6 bg-white/5 backdrop-blur-md border border-white/10 text-white font-headline font-bold rounded-xl hover:bg-white/10 transition-all uppercase tracking-[0.2em] text-sm cursor-pointer flex items-center justify-center text-center">
                 Our Strategic Thesis
-              </button>
+              </Link>
             </div>
           </div>
 
@@ -314,11 +315,21 @@ export default function Home() {
                 </div>
               </div>
 
-              <button
-                onClick={() => setRoiMetrics({ ...roiMetrics, tier: 'pro' })}
-                className="w-full py-5 bg-white text-primary-container font-headline font-extrabold rounded-2xl hover:bg-primary transition-all active:scale-[0.98] uppercase tracking-[0.3em] text-xs cursor-pointer shadow-xl">
-                {roiMetrics.tier === 'pro' ? 'Unlock This Growth' : 'Switch to Pro System'}
-              </button>
+              {roiMetrics.tier === 'pro' ? (
+                <Link
+                  href="/contact"
+                  className="w-full py-5 bg-white text-primary-container font-headline font-extrabold rounded-2xl hover:bg-primary transition-all active:scale-[0.98] uppercase tracking-[0.3em] text-xs cursor-pointer shadow-xl flex items-center justify-center text-center"
+                >
+                  Unlock This Growth
+                </Link>
+              ) : (
+                <button
+                  onClick={() => setRoiMetrics({ ...roiMetrics, tier: 'pro' })}
+                  className="w-full py-5 bg-white text-primary-container font-headline font-extrabold rounded-2xl hover:bg-primary transition-all active:scale-[0.98] uppercase tracking-[0.3em] text-xs cursor-pointer shadow-xl"
+                >
+                  Switch to Pro System
+                </button>
+              )}
             </div>
           </div>
         </div>
@@ -384,9 +395,14 @@ export default function Home() {
               <h2 className="text-6xl md:text-8xl font-headline font-extrabold text-on-background tracking-tighter leading-tight">Mission Critical.</h2>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
-              <p className="text-on-surface text-xl font-light leading-relaxed">
-                Our mission is to eliminate the fragility of digital client acquisition. In an industry of templates, we provide architecture that stands firm while your competition scales with fragile, fragmented setups.
-              </p>
+              <div className="space-y-8">
+                <p className="text-on-surface text-xl font-light leading-relaxed">
+                  Our mission is to eliminate the fragility of digital client acquisition. In an industry of templates, we provide architecture that stands firm while your competition scales with fragile, fragmented setups.
+                </p>
+                <Link href="/contact" className="inline-flex px-8 py-4 bg-primary text-primary-container font-label text-[10px] font-bold tracking-widest uppercase rounded-xl hover:scale-105 transition-all active:scale-95 shadow-lg shadow-primary/10">
+                  Connect With Our Team
+                </Link>
+              </div>
               <p className="text-on-surface-variant text-xl font-light leading-relaxed">
                 We act as your long-term tactical partner, embedding ourselves in your growth journey and providing the strategic foresight needed for global leadership.
               </p>
@@ -405,9 +421,9 @@ export default function Home() {
             <p className="text-on-primary-container text-2xl font-light max-w-2xl mx-auto">
               Ready to engineer your growth? We are currently accepting applications for the Q3 Strategic intake.
             </p>
-            <button className="px-16 py-8 bg-primary text-primary-container font-headline font-black rounded-3xl hover:scale-105 transition-all active:scale-95 shadow-2xl shadow-primary/20 uppercase tracking-[0.4em] text-lg cursor-pointer">
+            <Link href="/contact" className="inline-flex items-center justify-center px-16 py-8 bg-primary text-primary-container font-headline font-black rounded-3xl hover:scale-105 transition-all active:scale-95 shadow-2xl shadow-primary/20 uppercase tracking-[0.4em] text-lg cursor-pointer">
               Apply for Partnership
-            </button>
+            </Link>
           </div>
         </div>
 
