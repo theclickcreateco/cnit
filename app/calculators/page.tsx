@@ -4,7 +4,11 @@ import React, { useState, useEffect } from 'react';
 
 // Individual Calculator Components
 
-const StandardROICalculator = ({ onClose }) => {
+interface CalculatorProps {
+  onClose: () => void;
+}
+
+const StandardROICalculator = ({ onClose }: CalculatorProps) => {
   const [metrics, setMetrics] = useState({ netProfit: 5000, costOfInvestment: 20000 });
   const [saved, setSaved] = useState(false);
 
@@ -49,7 +53,7 @@ const StandardROICalculator = ({ onClose }) => {
   );
 };
 
-const NetProfitMarginCalculator = ({ onClose }) => {
+const NetProfitMarginCalculator = ({ onClose }: CalculatorProps) => {
   const [metrics, setMetrics] = useState({ totalRevenue: 100000, totalExpenses: 80000 });
   const [saved, setSaved] = useState(false);
 
@@ -101,7 +105,7 @@ const NetProfitMarginCalculator = ({ onClose }) => {
   );
 };
 
-const PipelineROICalculator = ({ onClose }) => {
+const PipelineROICalculator = ({ onClose }: CalculatorProps) => {
   const [metrics, setMetrics] = useState({
     traffic: 25000,
     conversionRate: 1.5,
@@ -175,7 +179,7 @@ const PipelineROICalculator = ({ onClose }) => {
   );
 };
 
-const ROASCalculator = ({ onClose }) => {
+const ROASCalculator = ({ onClose }: CalculatorProps) => {
   const [metrics, setMetrics] = useState({
     budget: 5000,
     cpc: 2.50,
@@ -258,7 +262,7 @@ const ROASCalculator = ({ onClose }) => {
   );
 };
 
-const CACCalculator = ({ onClose }) => {
+const CACCalculator = ({ onClose }: CalculatorProps) => {
   const [metrics, setMetrics] = useState({ marketingSpend: 15000, newCustomers: 50 });
   const [saved, setSaved] = useState(false);
 
@@ -303,7 +307,7 @@ const CACCalculator = ({ onClose }) => {
   );
 };
 
-const LTVCalculator = ({ onClose }) => {
+const LTVCalculator = ({ onClose }: CalculatorProps) => {
   const [metrics, setMetrics] = useState({ avgPurchaseValue: 500, purchaseFrequencyPerYear: 4, customerLifespanYears: 3 });
   const [saved, setSaved] = useState(false);
 
@@ -354,7 +358,7 @@ const LTVCalculator = ({ onClose }) => {
   );
 };
 
-const LTVCACRatioCalculator = ({ onClose }) => {
+const LTVCACRatioCalculator = ({ onClose }: CalculatorProps) => {
   const [metrics, setMetrics] = useState({ ltv: 6000, cac: 1500 });
   const [saved, setSaved] = useState(false);
 
@@ -369,7 +373,7 @@ const LTVCACRatioCalculator = ({ onClose }) => {
     setTimeout(() => setSaved(false), 2000);
   };
 
-  const ratio = metrics.cac > 0 ? (metrics.ltv / metrics.cac).toFixed(1) : 0;
+  const ratio = metrics.cac > 0 ? (metrics.ltv / metrics.cac) : 0;
   
   let healthText = "Needs Improvement";
   let healthColor = "text-yellow-400";
@@ -392,7 +396,7 @@ const LTVCACRatioCalculator = ({ onClose }) => {
 
       <div className="bg-primary/20 p-6 rounded-xl border border-primary/30 space-y-4 text-center">
         <span className="block text-primary/70 font-label text-[10px] uppercase tracking-widest mb-1">LTV:CAC Ratio</span>
-        <span className="text-4xl text-white font-black block mb-2">{ratio} : 1</span>
+        <span className="text-4xl text-white font-black block mb-2">{typeof ratio === 'number' ? ratio.toFixed(1) : ratio} : 1</span>
         <span className={`text-xs font-label uppercase tracking-widest font-bold ${healthColor}`}>{healthText}</span>
       </div>
 
@@ -406,7 +410,7 @@ const LTVCACRatioCalculator = ({ onClose }) => {
   );
 };
 
-const BreakEvenCalculator = ({ onClose }) => {
+const BreakEvenCalculator = ({ onClose }: CalculatorProps) => {
   const [metrics, setMetrics] = useState({
     fixedCosts: 3000,
     variableCostPerClient: 200,
@@ -478,7 +482,7 @@ const BreakEvenCalculator = ({ onClose }) => {
 };
 
 
-const InventoryTurnoverCalculator = ({ onClose }) => {
+const InventoryTurnoverCalculator = ({ onClose }: CalculatorProps) => {
   const [metrics, setMetrics] = useState({ cogs: 50000, avgInventory: 10000 });
   const [saved, setSaved] = useState(false);
 
@@ -523,7 +527,7 @@ const InventoryTurnoverCalculator = ({ onClose }) => {
   );
 };
 
-const ProductivityCalculator = ({ onClose }) => {
+const ProductivityCalculator = ({ onClose }: CalculatorProps) => {
   const [metrics, setMetrics] = useState({ totalOutput: 15000, totalHours: 160 });
   const [saved, setSaved] = useState(false);
 
@@ -568,7 +572,7 @@ const ProductivityCalculator = ({ onClose }) => {
   );
 };
 
-const ChurnRateCalculator = ({ onClose }) => {
+const ChurnRateCalculator = ({ onClose }: CalculatorProps) => {
   const [metrics, setMetrics] = useState({ startingCustomers: 250, lostCustomers: 12 });
   const [saved, setSaved] = useState(false);
 
