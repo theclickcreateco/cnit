@@ -1,6 +1,6 @@
-import React from 'react';
-import { Mail } from 'lucide-react';
-import { Linkedin, Instagram, Twitter } from './BrandIcons';
+import React from "react";
+import { Mail } from "lucide-react";
+import { Linkedin, Instagram, Twitter } from "./BrandIcons";
 
 export default function Footer() {
   return (
@@ -12,26 +12,46 @@ export default function Footer() {
               CN IT Solutions
             </div>
             <p className="font-body text-base leading-relaxed text-on-surface-variant max-w-sm">
-              Strategic intelligence for global leaders. Engineering high-performance digital systems that dominate markets.
+              Strategic intelligence for global leaders. Engineering
+              high-performance digital systems that dominate markets.
             </p>
           </div>
         </div>
 
         <div className="mt-24 pt-12 border-t border-outline-variant/30 flex flex-col md:flex-row justify-between items-center gap-8">
           <div className="font-body text-xs text-on-surface-variant tracking-wider uppercase">
-            © 2026 CN IT Solutions. All Rights Reserved. Strategic Intelligence for Global Leaders.
+            © 2026 CN IT Solutions. All Rights Reserved. Strategic Intelligence
+            for Global Leaders.
           </div>
           <div className="flex gap-4">
-            <a href="https://www.linkedin.com/company/112568314/admin/dashboard/" target="_blank" rel="noopener noreferrer" className="w-11 h-11 rounded-full border border-outline-variant/50 flex items-center justify-center cursor-pointer hover:bg-primary-container hover:text-white hover:border-transparent transition-all group">
+            <a
+              href="https://www.linkedin.com/company/cnitsolutions"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-11 h-11 rounded-full border border-outline-variant/50 flex items-center justify-center cursor-pointer hover:bg-primary-container hover:text-white hover:border-transparent transition-all group"
+            >
               <Linkedin size={18} strokeWidth={1.5} />
             </a>
-            <a href="#" target="_blank" rel="noopener noreferrer" className="w-11 h-11 rounded-full border border-outline-variant/50 flex items-center justify-center cursor-pointer hover:bg-[#E1306C] hover:text-white hover:border-transparent transition-all group">
+            <a
+              href="https://www.instagram.com/cinorium_/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-11 h-11 rounded-full border border-outline-variant/50 flex items-center justify-center cursor-pointer hover:bg-[#E1306C] hover:text-white hover:border-transparent transition-all group"
+            >
               <Instagram size={18} strokeWidth={1.5} />
             </a>
-            <a href="#" target="_blank" rel="noopener noreferrer" className="w-11 h-11 rounded-full border border-outline-variant/50 flex items-center justify-center cursor-pointer hover:bg-black hover:text-white hover:border-transparent transition-all group">
+            <a
+              href="https://x.com/cinorium_"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-11 h-11 rounded-full border border-outline-variant/50 flex items-center justify-center cursor-pointer hover:bg-black hover:text-white hover:border-transparent transition-all group"
+            >
               <Twitter size={18} strokeWidth={1.5} />
             </a>
-            <a href="/contact" className="w-11 h-11 rounded-full border border-outline-variant/50 flex items-center justify-center cursor-pointer hover:bg-primary hover:text-white hover:border-transparent transition-all">
+            <a
+              href="/contact"
+              className="w-11 h-11 rounded-full border border-outline-variant/50 flex items-center justify-center cursor-pointer hover:bg-primary hover:text-white hover:border-transparent transition-all"
+            >
               <Mail size={18} strokeWidth={1.5} />
             </a>
           </div>
